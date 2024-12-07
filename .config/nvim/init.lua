@@ -1,0 +1,6 @@
+require("config.vanilla")
+require("config.lazy")
+require("core.keymaps")
+require("plugins.nvim-tree")
+require("plugins.telescope")
+require("plugins.lsp")
