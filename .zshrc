@@ -28,6 +28,5 @@ alias gacp='ga && gc "update" && gp'
 alias bgacp='bazel configure && gacp'
 alias ssh-nh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o LogLevel=ERROR'
 
-alias vim='nvim'
-alias ls='ls -ca'
+alias ls='ls --color -a'
 
