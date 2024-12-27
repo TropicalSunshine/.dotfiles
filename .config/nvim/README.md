@@ -1,3 +1,5 @@
+Forked from [NvChad](https://github.com/NvChad/NvChad)
+
 <h1 align="center">NvChad</h1>
 
 <div align="center">
