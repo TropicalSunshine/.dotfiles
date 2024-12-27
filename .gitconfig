@@ -1,7 +1,0 @@
-[core]
-	editor = vim
-[user]
-	name = TropicalSunshine
-	email = jason.l990809@gmail.com
-[alias]
-	ci = commit
