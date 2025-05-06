@@ -1,4 +1,4 @@
-{ pkgs, config, lib, osConfig, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./git.nix
@@ -7,10 +7,12 @@
   home.packages = with pkgs; [
     curl
     jq
-    iperf
-    # collection of ip utilities including 'ip'
-    iproute2
     unzip
     zip
+  ] ++ lib.optionals (pkgs.stdenv.isDarwin) [
+    darwin.iproute2mac
+  ] ++ lib.optionals (pkgs.stdenv.isLinux) [
+    # collection of ip utilities including 'ip'
+    iproute2
   ];
 }
