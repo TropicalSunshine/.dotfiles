@@ -2,6 +2,7 @@
 {
   imports = [
     ./git.nix
+    ./nvim
   ];
 
   home.packages = with pkgs; [
