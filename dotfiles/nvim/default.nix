@@ -7,7 +7,7 @@
 
   programs.neovim = {
     enable = true;
-    extraConfig = ''
+    extraConfig = builtins.readFile ./.vimrc + ''
       " LSP config (the mappings used in the default file don't quite work right)
       nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
       nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -53,11 +53,66 @@
       rainbow-delimiters-nvim
       {
         plugin = telescope-nvim;
+        type = "lua";
         config = ''
-          nnoremap <leader>tf <cmd>Telescope find_files<cr>
-          nnoremap <leader>tg <cmd>Telescope live_grep<cr>
-          nnoremap <leader>tb <cmd>Telescope buffers<cr>
-          nnoremap <leader>th <cmd>Telescope help_tags<cr>
+        -- telescope
+        local map = vim.keymap.set
+        map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
+        local telescope_builtin = require("telescope.builtin")
+        vim.keymap.set('n', '<leader>pws', function()
+        local word = vim.fn.expand("<cword>")
+        telescope_builtin.grep_string({ search = word })
+        end)
+        map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
+        map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
+        map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
+        map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
+        map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
+        map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
+        map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
+        map("n", "<leader>gf", "<cmd>Telescope git_files<CR>", { desc = "telescope find git files"})
+        map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
+
+        map("n", "<leader>th", function()
+        require("nvchad.themes").open()
+        end, { desc = "telescope nvchad themes" })
+
+        map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
+        map(
+          "n",
+          "<leader>fa",
+          "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
+          { desc = "telescope find all files" }
+        )
+        '';
+      }
+      {
+        plugin = nvim-tree-lua;
+        type = "lua";
+        config = ''
+          require'nvim-tree'.setup({
+            filters = { dotfiles = false },
+            disable_netrw = true,
+            hijack_cursor = true,
+            sync_root_with_cwd = true,
+            update_focused_file = {
+              enable = true,
+              update_root = false,
+            },
+            view = {
+              width = 30,
+              preserve_window_proportions = true,
+            },
+            renderer = {
+              root_folder_label = false,
+              highlight_git = true,
+              indent_markers = { enable = true }
+            },
+          })
+
+          local map = vim.keymap.set
+          map("n", "<S-t>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+          map("n", "<S-f>", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
         '';
       }
       {
