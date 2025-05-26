@@ -4,6 +4,7 @@
     ./git.nix
     ./nvim
     ./languages/python3.nix
+    ./languages/go.nix
   ];
 
   programs.home-manager.enable = true;
