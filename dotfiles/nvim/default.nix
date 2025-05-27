@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     nixd
     tinymist
+    gopls
   ];
 
   programs.neovim = {
@@ -165,6 +166,9 @@
                 }
               }
             }
+          }
+          require'lspconfig'.gopls.setup{
+            capabilities = capabilities
           }
         '';
       }
