@@ -5,6 +5,7 @@
     ./nvim
     ./languages/python3.nix
     ./languages/go.nix
+    ./languages/rust.nix
   ];
 
   programs.home-manager.enable = true;
