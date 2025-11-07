@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    ./git.nix
     ./nvim
     ./languages/python3.nix
     ./languages/go.nix
