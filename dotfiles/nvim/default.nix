@@ -7,6 +7,7 @@
 
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     extraConfig = builtins.readFile ./.vimrc + ''
       " LSP config (the mappings used in the default file don't quite work right)
       nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>

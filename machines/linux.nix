@@ -1,11 +1,12 @@
+
 { pkgs, ... }:
 {
     imports = [
         ../dotfiles/common.nix
     ];
 
-    programs.home-manager.enable = true;
     home.packages = with pkgs; [
-      darwin.iproute2mac
+      # collection of ip utilities including 'ip'
+      iproute2
     ];
 }

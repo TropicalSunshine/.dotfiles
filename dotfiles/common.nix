@@ -5,12 +5,32 @@
     ./languages/python3.nix
     ./languages/go.nix
     ./languages/rust.nix
+    ../options/nix.nix
   ];
 
   programs.home-manager.enable = true;
+
+  home = {
+    username = "jliu";
+    homeDirectory = "/Users/jliu";
+  };
+
   programs.vim = {
     enable = true;
     extraConfig = builtins.readFile ./nvim/.vimrc;
+  };
+
+
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = [ "Roboto" ];
+        sansSerif = [ "Roboto" ];
+        monospace = [ "Roboto Mono" ];
+        emoji = [ "Noto Color Emoji" "Noto Emoji" ];
+      };
+    };
   };
 
   home.packages = with pkgs; [
@@ -18,10 +38,8 @@
     jq
     unzip
     zip
-    ] ++ lib.optionals (pkgs.stdenv.isDarwin) [
-    darwin.iproute2mac
-    ] ++ lib.optionals (pkgs.stdenv.isLinux) [
-    # collection of ip utilities including 'ip'
-    iproute2
+    roboto
+    roboto-mono
+    noto-fonts-emoji
   ];
 }
