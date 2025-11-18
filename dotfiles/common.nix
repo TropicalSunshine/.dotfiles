@@ -5,6 +5,7 @@
     ./languages/python3.nix
     ./languages/go.nix
     ./languages/rust.nix
+    ./languages/cpp.nix
     ../options/nix.nix
   ];
 
@@ -41,5 +42,6 @@
     roboto
     roboto-mono
     noto-fonts-emoji
+    tmux
   ];
 }

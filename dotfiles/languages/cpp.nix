@@ -1,6 +1,11 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    clang-tools
+    llvmPackages.clang-unwrapped
+    boost
   ];
+
+  home.sessionVariables = {
+    LD_LIBRARY_PATH = "${pkgs.boost}/lib:";
+  };
 }
