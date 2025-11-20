@@ -21,10 +21,10 @@
         ];
       };
 
-      aarch64-linx = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+      x86_64-linux = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [
-          ./machines/linux/mix
+          ./machines/linux.nix
           {
             home.stateVersion = "24.05";
           }

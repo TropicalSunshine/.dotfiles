@@ -11,10 +11,6 @@
 
   programs.home-manager.enable = true;
 
-  home = {
-    username = "jliu";
-    homeDirectory = "/Users/jliu";
-  };
 
   programs.vim = {
     enable = true;
@@ -43,5 +39,8 @@
     roboto-mono
     noto-fonts-emoji
     tmux
+    xclip
+    direnv
+    git-lfs
   ];
 }
