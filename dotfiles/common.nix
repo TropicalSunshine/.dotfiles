@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 {
   imports = [
     ./nvim
@@ -7,9 +7,28 @@
     ./languages/rust.nix
     ./languages/cpp.nix
     ../options/nix.nix
+    ../envs/node.nix
   ];
 
   programs.home-manager.enable = true;
+
+  programs.git = {
+      enable = true;
+  };
+
+  programs.bash = {
+    enable = true;
+    shellAliases = {} // lib.optionalAttrs config.programs.git.enable {
+      ga = "git add -A";
+      gc = "git commit -m";
+      gp = "git push origin $(git branch --show-current)";
+      gcnv = "git commit --no-verify -m";
+      gacp = "ga && gc 'update'";
+    };
+    bashrcExtra = ''
+    PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
+    '';
+  };
 
 
   programs.vim = {
