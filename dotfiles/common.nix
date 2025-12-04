@@ -22,11 +22,13 @@
       ga = "git add -A";
       gc = "git commit -m";
       gp = "git push origin $(git branch --show-current)";
+      gpo = "git pull origin $(git branch --show-current)";
       gcnv = "git commit --no-verify -m";
-      gacp = "ga && gc 'update'";
+      gacp = "ga && gc 'update' && gp";
     };
     bashrcExtra = ''
     PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
+    source ~/.oldbashrc
     '';
   };
 

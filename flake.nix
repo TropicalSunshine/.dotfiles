@@ -18,7 +18,7 @@
           {
             home.stateVersion = "24.05";
           }
-        ];
+          ];
       };
 
       x86_64-linux = home-manager.lib.homeManagerConfiguration {
