@@ -5,7 +5,6 @@
         ../dotfiles/common.nix
     ];
 
-
     home = {
       username = "jliu";
       homeDirectory = "/home/jliu";

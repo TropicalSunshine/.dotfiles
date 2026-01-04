@@ -5,9 +5,7 @@
     ./languages/python3.nix
     ./languages/go.nix
     ./languages/rust.nix
-    ./languages/cpp.nix
     ../options/nix.nix
-    ../envs/node.nix
   ];
 
   programs.home-manager.enable = true;
@@ -87,13 +85,15 @@ function set_bash_prompt () {
 # Tell Bash to run the above function for every prompt
 export PROMPT_COMMAND=set_bash_prompt
     '';
-    shellAliases = {} // lib.optionalAttrs config.programs.git.enable {
-      ga = "git add -A";
-      gc = "git commit -m";
-      gp = "git push origin $(git branch --show-current)";
-      gpo = "git pull origin $(git branch --show-current)";
-      gcnv = "git commit --no-verify -m";
-      gacp = "ga && gc 'update' && gp";
+    shellAliases = {
+        lsa= "ls -a --color=auto";
+      } // lib.optionalAttrs config.programs.git.enable {
+        ga = "git add -A";
+        gc = "git commit -m";
+        gp = "git push origin $(git branch --show-current)";
+        gpo = "git pull origin $(git branch --show-current)";
+        gcnv = "git commit --no-verify -m";
+        gacp = "ga && gc 'update' && gp";
     };
     bashrcExtra = ''
     source ~/.oldbashrc
@@ -131,5 +131,6 @@ export PROMPT_COMMAND=set_bash_prompt
     xclip
     direnv
     git-lfs
+    git
   ];
 }
