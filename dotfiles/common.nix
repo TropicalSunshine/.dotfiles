@@ -11,7 +11,11 @@
   programs.home-manager.enable = true;
 
   programs.git = {
-      enable = true;
+    enable = true;
+  };
+
+  programs.readline = {
+    enable = true;
   };
 
   programs.bash = {
@@ -130,7 +134,5 @@ export PROMPT_COMMAND=set_bash_prompt
     tmux
     xclip
     direnv
-    git-lfs
-    git
   ];
 }
