@@ -1,5 +1,5 @@
 {
-  description = "Jason Dotfiles";
+  description = "Jason's Home Manager Configurations";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -18,7 +18,7 @@
           {
             home.stateVersion = "24.05";
           }
-          ];
+        ];
       };
 
       x86_64-linux = home-manager.lib.homeManagerConfiguration {
@@ -30,7 +30,6 @@
           }
         ];
       };
-    
     };
   };
 }

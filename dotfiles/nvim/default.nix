@@ -41,9 +41,16 @@
     '';
     plugins = with pkgs.vimPlugins; [
       {
-        plugin = nightfox-nvim;
+        plugin = nvim-web-devicons;
         type = "lua";
         config = ''
+          require("nvim-web-devicons").setup()
+        '';
+      }
+      {
+        plugin = nightfox-nvim;
+        type = "lua";
+        config = /* lua */''
           require('nightfox')
           vim.cmd.colorscheme("nordfox")
         '';
@@ -55,7 +62,7 @@
       {
         plugin = telescope-nvim;
         type = "lua";
-        config = ''
+        config = /* lua */''
           local builtin = require('telescope.builtin')
           vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
           vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Telescope git files' })
@@ -67,7 +74,7 @@
       {
         plugin = nvim-tree-lua;
         type = "lua";
-        config = ''
+        config = /* lua */''
           require'nvim-tree'.setup({
             filters = { dotfiles = false },
             disable_netrw = true,
@@ -91,6 +98,20 @@
           local map = vim.keymap.set
           map("n", "<S-t>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
           map("n", "<S-f>", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
+        '';
+      }
+      # format on save
+      {
+        plugin = neoformat;
+        type = "lua";
+        config = /* lua */ ''
+          vim.g.neoformat_enable_nix = { 'nixfmt', 'nixpkgs-fmt'}
+          vim.cmd([[
+            augroup fmt
+              autocmd!
+              autocmd BufWritePre * undojoin | Neoformat
+            augroup END
+          ]])
         '';
       }
       {

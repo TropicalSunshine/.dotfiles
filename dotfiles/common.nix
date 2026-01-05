@@ -103,9 +103,6 @@ export PROMPT_COMMAND=set_bash_prompt
         gcnv = "git commit --no-verify -m";
         gacp = "ga && gc 'update' && gp";
     };
-    bashrcExtra = ''
-    source ~/.oldbashrc
-    '';
   };
 
 
@@ -118,12 +115,6 @@ export PROMPT_COMMAND=set_bash_prompt
   fonts = {
     fontconfig = {
       enable = true;
-      defaultFonts = {
-        serif = [ "Roboto" ];
-        sansSerif = [ "Roboto" ];
-        monospace = [ "Roboto Mono" ];
-        emoji = [ "Noto Color Emoji" "Noto Emoji" ];
-      };
     };
   };
 
@@ -138,5 +129,8 @@ export PROMPT_COMMAND=set_bash_prompt
     tmux
     xclip
     direnv
+
+    #fonts
+    nerd-fonts.jetbrains-mono
   ];
 }
