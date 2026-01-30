@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 
   programs.vscode = {
     enable = true;
@@ -10,6 +10,12 @@
         "workbench.colorTheme" = "Monokai";
         # Optional: also enable format-on-save globally in this profile
         "editor.formatOnSave" = true;
+
+        "nixFormatter.path" = "nixfmt-classic";
+
+        # Optional: language server settings if you use nixd
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nixd";
       };
 
       # Keybindings for this profile
@@ -29,11 +35,10 @@
       ];
 
       extensions = with pkgs.vscode-extensions; [
-        brettm12345.nixfmt-vscode
+        jnoortheen.nix-ide
         dracula-theme.theme-dracula
         vscodevim.vim
         yzhang.markdown-all-in-one
-        bbenoist.nix
       ];
     };
   };
