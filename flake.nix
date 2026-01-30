@@ -9,7 +9,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager }: {
+  outputs = { self, nixpkgs, home-manager }: {
     homeConfigurations = {
       aarch64-darwin = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."aarch64-darwin";

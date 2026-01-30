@@ -43,12 +43,7 @@
     };
   };
 
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    initExtra = builtins.readFile ./bashrc.sh;
-    shellAliases = { vscode = "codium"; };
-  };
+  programs.bash = { shellAliases = { code = "codium"; }; };
 
   home.packages = with pkgs; [ nixfmt-classic ];
 }

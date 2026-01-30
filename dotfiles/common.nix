@@ -1,12 +1,5 @@
 { pkgs, lib, config, ... }: {
-  imports = [
-    ./nvim
-    ./languages/python3.nix
-    ./languages/go.nix
-    ./languages/rust.nix
-    ./vscode.nix
-    ../options/nix.nix
-  ];
+  imports = [ ./nvim ./languages/python3.nix ./vscode.nix ../options/nix.nix ];
 
   programs.home-manager.enable = true;
 
