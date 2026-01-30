@@ -1,9 +1,5 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    nixd
-    tinymist
-  ];
+{ pkgs, ... }: {
+  home.packages = with pkgs; [ nixd tinymist ];
 
   programs.neovim = {
     enable = true;
@@ -50,10 +46,11 @@
       {
         plugin = nightfox-nvim;
         type = "lua";
-        config = /* lua */''
-          require('nightfox')
-          vim.cmd.colorscheme("nordfox")
-        '';
+        config = # lua
+          ''
+            require('nightfox')
+            vim.cmd.colorscheme("nordfox")
+          '';
       }
       # utils
       vim-airline
@@ -62,57 +59,60 @@
       {
         plugin = telescope-nvim;
         type = "lua";
-        config = /* lua */''
-          local builtin = require('telescope.builtin')
-          vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-          vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Telescope git files' })
-          vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-          vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-          vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-        '';
+        config = # lua
+          ''
+            local builtin = require('telescope.builtin')
+            vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+            vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Telescope git files' })
+            vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+            vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+            vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+          '';
       }
       {
         plugin = nvim-tree-lua;
         type = "lua";
-        config = /* lua */''
-          require'nvim-tree'.setup({
-            filters = { dotfiles = false },
-            disable_netrw = true,
-            hijack_cursor = true,
-            sync_root_with_cwd = true,
-            update_focused_file = {
-              enable = true,
-              update_root = false,
-            },
-            view = {
-              width = 30,
-              preserve_window_proportions = true,
-            },
-            renderer = {
-              root_folder_label = false,
-              highlight_git = true,
-              indent_markers = { enable = true }
-            },
-          })
+        config = # lua
+          ''
+            require'nvim-tree'.setup({
+              filters = { dotfiles = false },
+              disable_netrw = true,
+              hijack_cursor = true,
+              sync_root_with_cwd = true,
+              update_focused_file = {
+                enable = true,
+                update_root = false,
+              },
+              view = {
+                width = 30,
+                preserve_window_proportions = true,
+              },
+              renderer = {
+                root_folder_label = false,
+                highlight_git = true,
+                indent_markers = { enable = true }
+              },
+            })
 
-          local map = vim.keymap.set
-          map("n", "<S-t>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
-          map("n", "<S-f>", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
-        '';
+            local map = vim.keymap.set
+            map("n", "<S-t>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+            map("n", "<S-f>", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
+          '';
       }
       # format on save
       {
         plugin = neoformat;
         type = "lua";
-        config = /* lua */ ''
-          vim.g.neoformat_enable_nix = { 'nixfmt', 'nixpkgs-fmt'}
-          vim.cmd([[
-            augroup fmt
-              autocmd!
-              autocmd BufWritePre * undojoin | Neoformat
-            augroup END
-          ]])
-        '';
+        config = # lua
+          ''
+            vim.g.neoformat_enable_nix = { 'nixfmt', 'nixpkgs-fmt'}
+            vim.cmd([[
+              augroup fmt
+                autocmd!
+                autocmd BufWritePre * undojoin | Neoformat
+              augroup END
+            ]])
+          '';
       }
       {
         plugin = indent-blankline-nvim;

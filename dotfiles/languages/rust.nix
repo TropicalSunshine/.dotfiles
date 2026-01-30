@@ -1,7 +1,1 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-    rustc
-    cargo
-  ];
-}
+{ pkgs, ... }: { home.packages = with pkgs; [ rustc cargo ]; }

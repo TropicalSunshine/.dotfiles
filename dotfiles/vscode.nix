@@ -1,5 +1,5 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -28,18 +28,22 @@
         }
       ];
 
-    extensions = with pkgs.vscode-extensions; [
+      extensions = with pkgs.vscode-extensions; [
         brettm12345.nixfmt-vscode
-
         dracula-theme.theme-dracula
         vscodevim.vim
         yzhang.markdown-all-in-one
-        bbenoist.nix 
-    ];
+        bbenoist.nix
+      ];
     };
   };
 
-  home.packages = with pkgs; [
-    nixfmt-classic
-  ];
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    initExtra = builtins.readFile ./bashrc.sh;
+    shellAliases = { vscode = "codium"; };
+  };
+
+  home.packages = with pkgs; [ nixfmt-classic ];
 }

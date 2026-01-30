@@ -1,15 +1,10 @@
-{ pkgs, ... }:
-{
-    imports = [
-        ../dotfiles/common.nix
-    ];
+{ pkgs, ... }: {
+  imports = [ ../dotfiles/common.nix ];
 
-    home = {
-      username = "jliu";
-      homeDirectory = "/Users/jliu";
-    };
+  home = {
+    username = "jliu";
+    homeDirectory = "/Users/jliu";
+  };
 
-    home.packages = with pkgs; [
-      darwin.iproute2mac
-    ];
+  home.packages = with pkgs; [ darwin.iproute2mac ];
 }
