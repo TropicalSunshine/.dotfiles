@@ -16,6 +16,9 @@
         # Optional: language server settings if you use nixd
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
+
+        # disable minimap
+        "editor.minimap.enabled" = false;
       };
 
       # Keybindings for this profile
@@ -44,6 +47,4 @@
   };
 
   programs.bash = { shellAliases = { code = "codium"; }; };
-
-  home.packages = with pkgs; [ nixfmt-classic ];
 }
