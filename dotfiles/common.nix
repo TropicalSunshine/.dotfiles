@@ -25,6 +25,21 @@
     };
   };
 
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "Consolas";
+      size = 12;
+    };
+
+    shellIntegration = {
+      mode = "enabled";
+      enableBashIntegration = true;
+    };
+
+    themeFile = "Dracula";
+  };
+
   programs.vim = {
     enable = true;
     extraConfig = builtins.readFile ./nvim/.vimrc;
