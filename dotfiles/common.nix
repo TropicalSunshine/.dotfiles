@@ -36,8 +36,6 @@
       mode = "enabled";
       enableBashIntegration = true;
     };
-
-    themeFile = "Dracula";
   };
 
   programs.vim = {
