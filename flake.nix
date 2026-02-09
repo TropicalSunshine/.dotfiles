@@ -9,17 +9,29 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager }: {
-    homeConfigurations = {
-      aarch64-darwin = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."aarch64-darwin";
-        modules = [ ./machines/darwin.nix { home.stateVersion = "24.05"; } ];
-      };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+    }:
+    {
+      homeConfigurations = {
+        aarch64-darwin = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+          modules = [
+            ./machines/darwin.nix
+            { home.stateVersion = "24.05"; }
+          ];
+        };
 
-      x86_64-linux = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [ ./machines/linux.nix { home.stateVersion = "24.05"; } ];
+        x86_64-linux = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          modules = [
+            ./machines/linux.nix
+            { home.stateVersion = "24.05"; }
+          ];
+        };
       };
     };
-  };
 }

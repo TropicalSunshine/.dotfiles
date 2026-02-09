@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [ ../dotfiles/common.nix ];
 
   home = {
