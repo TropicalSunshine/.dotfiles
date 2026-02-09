@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   programs.vscode = {
     enable = true;
@@ -46,5 +47,9 @@
     };
   };
 
-  programs.bash = { shellAliases = { code = "codium"; }; };
+  programs.bash = {
+    shellAliases = {
+      code = "codium";
+    };
+  };
 }

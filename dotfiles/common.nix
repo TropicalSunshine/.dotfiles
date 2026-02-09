@@ -1,13 +1,30 @@
-{ pkgs, lib, config, ... }: {
-  imports = [ ./nvim ./languages/python3.nix ./vscode.nix ../options/nix.nix ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+  imports = [
+    ./nvim
+    ./languages/python3.nix
+    ./vscode.nix
+    ../options/nix.nix
+  ];
 
   programs.home-manager.enable = true;
 
-  programs.git = { enable = true; };
+  programs.git = {
+    enable = true;
+  };
 
-  programs.readline = { enable = true; };
+  programs.readline = {
+    enable = true;
+  };
 
-  programs.tmux = { enable = true; };
+  programs.tmux = {
+    enable = true;
+  };
 
   programs.bash = {
     enable = true;
@@ -15,7 +32,8 @@
     initExtra = builtins.readFile ./bashrc.sh;
     shellAliases = {
       lsa = "ls -a --color=auto";
-    } // lib.optionalAttrs config.programs.git.enable {
+    }
+    // lib.optionalAttrs config.programs.git.enable {
       ga = "git add -A";
       gc = "git commit -m";
       gp = "git push origin $(git branch --show-current)";
@@ -43,7 +61,11 @@
     extraConfig = builtins.readFile ./nvim/.vimrc;
   };
 
-  fonts = { fontconfig = { enable = true; }; };
+  fonts = {
+    fontconfig = {
+      enable = true;
+    };
+  };
 
   home.packages = with pkgs; [
     curl
@@ -57,7 +79,7 @@
     xclip
     direnv
 
-    #fonts
+    # fonts
     nerd-fonts.jetbrains-mono
   ];
 }

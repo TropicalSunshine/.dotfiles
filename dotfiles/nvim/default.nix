@@ -1,5 +1,9 @@
-{ pkgs, ... }: {
-  home.packages = with pkgs; [ nixd tinymist ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    nixd
+    tinymist
+  ];
 
   programs.neovim = {
     enable = true;
