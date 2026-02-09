@@ -32,6 +32,13 @@
       size = 12;
     };
 
+    # Other kitty settings...
+    settings = {
+      shell = "/run/current-system/sw/bin/bash";
+      # or, depending on your system:
+      # shell = "/bin/bash";
+    };
+
     shellIntegration = {
       mode = "enabled";
       enableBashIntegration = true;

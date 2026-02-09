@@ -42,9 +42,13 @@
         dracula-theme.theme-dracula
         vscodevim.vim
         yzhang.markdown-all-in-one
+
+        golang.go
       ];
     };
   };
+
+  home.packages = with pkgs; [ nixfmt-classic go gopls ];
 
   programs.bash = { shellAliases = { code = "codium"; }; };
 }
