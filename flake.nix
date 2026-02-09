@@ -14,7 +14,6 @@
       self,
       nixpkgs,
       home-manager,
-      nixgl,
     }:
     {
       homeConfigurations = {
@@ -24,9 +23,6 @@
             ./machines/darwin.nix
             { home.stateVersion = "24.05"; }
           ];
-          extraSpecialArgs = {
-            inherit nixgl;
-          };
         };
 
         x86_64-linux = home-manager.lib.homeManagerConfiguration {
