@@ -44,6 +44,11 @@
         yzhang.markdown-all-in-one
 
         golang.go
+
+        # web dev
+        dbaeumer.vscode-eslint
+        bazelbuild.vscode-bazel
+        zxh404.vscode-proto3
       ];
     };
   };
