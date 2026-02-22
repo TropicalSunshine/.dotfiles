@@ -1,7 +1,8 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    python311Packages.black
-    python311
+  home.packages = with pkgs.python313Packages; [
+    pip
+    black
+    python
   ];
 }

@@ -9,7 +9,6 @@
         # Set the color theme to Monokai
         "workbench.colorTheme" = "Monokai";
         # Optional: also enable format-on-save globally in this profile
-        "editor.formatOnSave" = true;
 
         "nixFormatter.path" = "nixfmt-classic";
 
@@ -44,6 +43,7 @@
         yzhang.markdown-all-in-one
 
         golang.go
+        ms-python.python
 
         # web dev
         dbaeumer.vscode-eslint

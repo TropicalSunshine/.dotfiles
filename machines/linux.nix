@@ -1,4 +1,4 @@
-{ pkgs, nixgl, ... }: {
+{ pkgs, ... }: {
   imports = [ ../dotfiles/common.nix ];
 
   home = {
